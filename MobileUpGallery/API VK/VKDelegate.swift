@@ -10,7 +10,7 @@ import SwiftyVK
 final class VKDelegate: SwiftyVKDelegate {
     
     let appId = "7918409"
-    let scopes: Scopes = [.photos]
+    let scopes: Scopes = [.photos, .offline]
     
     init() {
         VK.setUp(appId: appId, delegate: self)
@@ -21,7 +21,7 @@ final class VKDelegate: SwiftyVKDelegate {
     }
     
     func vkNeedToPresent(viewController: VKViewController) {
-        if let rootController = UIApplication.shared.windows.first?.rootViewController {
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
             rootController.present(viewController, animated: true)
         }
     }

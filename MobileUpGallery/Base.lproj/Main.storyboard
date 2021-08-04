@@ -1,24 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="MobileUpGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Up     Gallery" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHg-ZE-9ru">
+                                <rect key="frame" x="24" y="208" width="366" height="113.5"/>
+                                <fontDescription key="fontDescription" name="Galvji-Bold" family="Galvji" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCa-Ea-Mhb">
+                                <rect key="frame" x="24" y="790" width="366" height="56"/>
+                                <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Cng-te-MOv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="18"/>
+                                <state key="normal" title="Вход через VK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonAtcion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gPe-3b-R6c"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jHg-ZE-9ru" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="164" id="9nq-5k-Utl"/>
+                            <constraint firstItem="jHg-ZE-9ru" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="Aqh-BD-PUI"/>
+                            <constraint firstItem="JCa-Ea-Mhb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="bsc-4E-n0K"/>
+                            <constraint firstAttribute="bottom" secondItem="JCa-Ea-Mhb" secondAttribute="bottom" constant="50" id="hQC-Bh-idJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JCa-Ea-Mhb" secondAttribute="trailing" constant="24" id="qLj-jY-kqf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jHg-ZE-9ru" secondAttribute="trailing" constant="24" id="wLT-fp-sQy"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButtonOutlet" destination="JCa-Ea-Mhb" id="YkR-a7-Es7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="132" y="60"/>
+        </scene>
+        <!--Gallery Up Mobile-->
+        <scene sceneID="dHk-pi-PSy">
+            <objects>
+                <viewController storyboardIdentifier="GalleryNavigationController" modalPresentationStyle="fullScreen" id="chH-iW-WdF" customClass="GalleryNavigationController" customModule="MobileUpGallery" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Jf-lM-JS7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Zr-LF-NTP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hSO-eA-ASC">
+                                    <size key="itemSize" width="247" height="282"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="cell" id="dBs-Ah-k7M" customClass="ProductCollectionViewCell" customModule="MobileUpGallery" customModuleProvider="target">
+                                        <rect key="frame" x="83.5" y="0.0" width="247" height="282"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="247" height="282"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C4N-mk-Ofv" customClass="CustomImageView" customModule="MobileUpGallery" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="247" height="282"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="C4N-mk-Ofv" firstAttribute="leading" secondItem="dBs-Ah-k7M" secondAttribute="leading" priority="999" id="6ey-U1-xGx"/>
+                                            <constraint firstItem="C4N-mk-Ofv" firstAttribute="top" secondItem="dBs-Ah-k7M" secondAttribute="top" priority="999" id="A4U-cr-meH"/>
+                                            <constraint firstAttribute="trailing" secondItem="C4N-mk-Ofv" secondAttribute="trailing" priority="999" id="qY2-my-coj"/>
+                                            <constraint firstAttribute="bottom" secondItem="C4N-mk-Ofv" secondAttribute="bottom" id="wh1-Tz-DxD"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="myImageView" destination="C4N-mk-Ofv" id="Rqq-KL-Woz"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="chH-iW-WdF" id="rvJ-F6-2c5"/>
+                                    <outlet property="delegate" destination="chH-iW-WdF" id="z3n-Zl-A97"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Tvf-eV-dEv"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstItem="9Zr-LF-NTP" firstAttribute="bottom" secondItem="1Jf-lM-JS7" secondAttribute="bottom" id="LpU-5j-ZN6"/>
+                            <constraint firstItem="9Zr-LF-NTP" firstAttribute="top" secondItem="Tvf-eV-dEv" secondAttribute="top" id="RGS-ud-9r0"/>
+                            <constraint firstItem="9Zr-LF-NTP" firstAttribute="leading" secondItem="Tvf-eV-dEv" secondAttribute="leading" id="lQY-Aa-5Vc"/>
+                            <constraint firstItem="9Zr-LF-NTP" firstAttribute="trailing" secondItem="Tvf-eV-dEv" secondAttribute="trailing" id="sim-kO-unA"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Gallery Up Mobile" id="Zki-5L-CkF">
+                        <barButtonItem key="rightBarButtonItem" title="Выход" id="Md7-zK-Whd">
+                            <color key="tintColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="logout:" destination="chH-iW-WdF" id="3bo-EB-2Hm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="photoCollectionView" destination="9Zr-LF-NTP" id="fFd-B9-s6J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kBJ-cI-bNW" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1821.7391304347827" y="59.598214285714285"/>
+        </scene>
+        <!--My Navigation Controller-->
+        <scene sceneID="UZk-ak-P9q">
+            <objects>
+                <navigationController storyboardIdentifier="MyNavigationController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="k2h-l9-q4w" customClass="MyNavigationController" customModule="MobileUpGallery" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="adm-jf-P0W">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Galvji-Bold" family="Galvji" pointSize="18"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="chH-iW-WdF" kind="relationship" relationship="rootViewController" id="GqJ-Cz-z8l"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ob6-U8-5EO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="911.59420289855075" y="59.598214285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
