@@ -94,7 +94,7 @@
                                             <constraint firstAttribute="bottom" secondItem="C4N-mk-Ofv" secondAttribute="bottom" id="wh1-Tz-DxD"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="myImageView" destination="C4N-mk-Ofv" id="Rqq-KL-Woz"/>
+                                            <outlet property="myImageView" destination="C4N-mk-Ofv" id="ZOy-Mi-ssR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

@@ -9,5 +9,8 @@ import UIKit
 
 class ProductCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var myImageView: UIImageView!
+    
+    @IBOutlet weak var myImageView: CustomImageView!
+    
+    
 }

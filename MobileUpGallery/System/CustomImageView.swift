@@ -17,7 +17,7 @@ class CustomImageView: UIImageView {
         
         imageUrlString = urlString
         let url = URL(string: urlString)
-        
+//        print(url?.description)
         image = nil
         
         if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) {

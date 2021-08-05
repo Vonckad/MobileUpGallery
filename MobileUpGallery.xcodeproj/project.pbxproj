@@ -17,6 +17,7 @@
 		E33E444626B9E600003F9A70 /* GalleryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33E444526B9E5FF003F9A70 /* GalleryNavigationController.swift */; };
 		E38D6A7626BB2D8800F04995 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38D6A7526BB2D8800F04995 /* CustomImageView.swift */; };
 		E38D6A7826BB2DB400F04995 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38D6A7726BB2DB400F04995 /* ProductCollectionViewCell.swift */; };
+		E38D6A7A26BBE49C00F04995 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38D6A7926BBE49B00F04995 /* DataModel.swift */; };
 		FAB245721C9203DA89A68E76 /* Pods_MobileUpGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA41E28265E86AC9F7134757 /* Pods_MobileUpGallery.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		E33E444526B9E5FF003F9A70 /* GalleryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryNavigationController.swift; sourceTree = "<group>"; };
 		E38D6A7526BB2D8800F04995 /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		E38D6A7726BB2DB400F04995 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		E38D6A7926BBE49B00F04995 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				E33E443126B9D3AD003F9A70 /* LoginViewController.swift */,
 				E33E444526B9E5FF003F9A70 /* GalleryNavigationController.swift */,
 				E38D6A7726BB2DB400F04995 /* ProductCollectionViewCell.swift */,
+				E38D6A7926BBE49B00F04995 /* DataModel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				E38D6A7826BB2DB400F04995 /* ProductCollectionViewCell.swift in Sources */,
 				E33E443026B9D3AD003F9A70 /* SceneDelegate.swift in Sources */,
 				E38D6A7626BB2D8800F04995 /* CustomImageView.swift in Sources */,
+				E38D6A7A26BBE49C00F04995 /* DataModel.swift in Sources */,
 				E33E444226B9D56A003F9A70 /* VKDelegate.swift in Sources */,
 				E33E444626B9E600003F9A70 /* GalleryNavigationController.swift in Sources */,
 			);

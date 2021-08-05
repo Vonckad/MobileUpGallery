@@ -17,9 +17,28 @@ class MyNavigationController: UINavigationController {
 class GalleryNavigationController: UIViewController {
 
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    var model: Response = .init(items: [], count: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([.font: UIFont.init(name: "Galvji", size: 18)!], for: [.normal, .selected])
+        
+        VK.API.Photos.get([.ownerId: "-128666765", .albumId: "266276915"])
+            .onSuccess { data in
+                let json = try JSONDecoder().decode(Response.self, from: data)
+                self.model = json
+                DispatchQueue.main.async { [weak self] in
+                    self?.photoCollectionView.reloadData()
+                }
+            }
+            .onError { error in
+                DispatchQueue.main.async { [weak self] in
+                    self?.createAlertView(title: "Сбой загрузки", massage: "Обновите страницу")
+                }
+                print("errror", error)
+            }
+            .send()
     }
     
     @IBAction func logout(_ sender: Any) {
@@ -38,12 +57,13 @@ class GalleryNavigationController: UIViewController {
 
 extension GalleryNavigationController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProductCollectionViewCell
+        cell.myImageView.loadImageUsingUrlStrting(urlString: String(describing: model.items[indexPath.row].sizes[0].url))
         
         return cell
     }
