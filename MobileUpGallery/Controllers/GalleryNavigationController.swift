@@ -76,4 +76,14 @@ extension GalleryNavigationController: UICollectionViewDataSource, UICollectionV
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let urlImageString = model.items[indexPath.row].sizes.filter{ $0.type == "z" }
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        let detailVC = storyboard.instantiateViewController(identifier: "DetailViewController") as! DetailViewController
+       
+        detailVC.fullImageString = urlImageString[0].url
+        
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
