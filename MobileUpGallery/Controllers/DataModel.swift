@@ -23,4 +23,5 @@ struct Item: Decodable {
 
 struct Size: Decodable {
     var url: String
+    var type: String
 }

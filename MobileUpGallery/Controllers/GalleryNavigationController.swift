@@ -22,7 +22,8 @@ class GalleryNavigationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes([.font: UIFont.init(name: "Galvji", size: 18)!], for: [.normal, .selected])
+        
+//        navigationItem.rightBarButtonItem?.setTitleTextAttributes([.font: UIFont.init(name: "Galvji", size: 18)!], for: [.normal, .selected])
         
         VK.API.Photos.get([.ownerId: "-128666765", .albumId: "266276915"])
             .onSuccess { data in
@@ -55,15 +56,23 @@ class GalleryNavigationController: UIViewController {
     }
 }
 
-extension GalleryNavigationController: UICollectionViewDataSource {
+extension GalleryNavigationController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let height = (UIScreen.main.bounds.size.height - 3) / 3
+        let width = (UIScreen.main.bounds.size.width - 2) / 2
+        return CGSize(width: width, height: height)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        let urlImageString = model.items[indexPath.row].sizes.filter { $0.type == "y" }
         let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProductCollectionViewCell
-        cell.myImageView.loadImageUsingUrlStrting(urlString: String(describing: model.items[indexPath.row].sizes[0].url))
+        cell.myImageView.loadImageUsingUrlStrting(urlString: String(describing: urlImageString[0].url))
         
         return cell
     }
