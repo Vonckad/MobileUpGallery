@@ -18,6 +18,7 @@ struct Response: Decodable {
 }
 
 struct Item: Decodable {
+    var date: Int
     var sizes: [Size]
 }
 

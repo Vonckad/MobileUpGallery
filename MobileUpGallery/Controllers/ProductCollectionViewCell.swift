@@ -1,16 +1,12 @@
 //
 //  ProductCollectionViewCell.swift
-//  WhiteStar
+//  MobileUpGallery
 //
-//  Created by Vlad Ralovich on 11/12/20.
+//  Created by Vlad Ralovich on 5.08.21.
 //
 
 import UIKit
 
 class ProductCollectionViewCell: UICollectionViewCell {
-    
-    
     @IBOutlet weak var myImageView: CustomImageView!
-    
-    
 }

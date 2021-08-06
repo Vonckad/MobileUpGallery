@@ -109,7 +109,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tvf-eV-dEv"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <accessibility key="accessibilityConfiguration">
                             <accessibilityTraits key="traits" notEnabled="YES"/>
                         </accessibility>
@@ -122,6 +122,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Gallery Up Mobile" id="Zki-5L-CkF">
+                        <barButtonItem key="backBarButtonItem" title=" " id="N9m-aW-AVA"/>
                         <barButtonItem key="rightBarButtonItem" title="Выход" id="Md7-zK-Whd">
                             <color key="tintColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -138,7 +139,7 @@
             </objects>
             <point key="canvasLocation" x="1821.7391304347827" y="59.598214285714285"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--dsate-->
         <scene sceneID="FLx-hb-PYQ">
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" id="N7g-GO-H6O" customClass="DetailViewController" customModule="MobileUpGallery" customModuleProvider="target" sceneMemberID="viewController">
@@ -146,28 +147,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KaX-Ue-8JX">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="Galvji-Bold" family="Galvji" pointSize="18"/>
-                                    <color key="textColor" systemColor="labelColor"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Date photo" id="rVl-ik-XpQ">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="3co-x7-Pwd">
-                                            <connections>
-                                                <action selector="backButton:" destination="N7g-GO-H6O" id="NK1-NJ-Z4I"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="gUc-Wh-q1w">
-                                            <connections>
-                                                <action selector="shareButton:" destination="N7g-GO-H6O" id="dlI-Lj-srT"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vdP-Hr-0Vn" customClass="CustomImageView" customModule="MobileUpGallery" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="98" width="414" height="700"/>
                                 <constraints>
@@ -184,9 +163,18 @@
                             <constraint firstItem="vdP-Hr-0Vn" firstAttribute="centerY" secondItem="0aW-Xc-DWZ" secondAttribute="centerY" id="ngb-wb-Jiy"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="dsate" id="1TE-fS-5fc">
+                        <barButtonItem key="backBarButtonItem" title=" " id="dWb-0A-ua7"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="c3w-aJ-8Rh">
+                            <color key="tintColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="shareButton:" destination="N7g-GO-H6O" id="whr-xp-dFs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="fullPhotoImageView" destination="vdP-Hr-0Vn" id="D5c-0q-xuS"/>
-                        <outlet property="titleDatePhoto" destination="rVl-ik-XpQ" id="kX2-3V-JhU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JWN-YE-RZV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -216,14 +204,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

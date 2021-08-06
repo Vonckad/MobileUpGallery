@@ -1,8 +1,8 @@
 //
 //  CustomImageView.swift
-//  WhiteStar
+//  MobileUpGallery
 //
-//  Created by Vlad Ralovich on 2/1/21.
+//  Created by Vlad Ralovich on 5.08.21.
 //
 
 import UIKit

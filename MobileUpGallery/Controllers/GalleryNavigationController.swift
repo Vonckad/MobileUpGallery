@@ -22,9 +22,6 @@ class GalleryNavigationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-//        navigationItem.rightBarButtonItem?.setTitleTextAttributes([.font: UIFont.init(name: "Galvji", size: 18)!], for: [.normal, .selected])
-        
         VK.API.Photos.get([.ownerId: "-128666765", .albumId: "266276915"])
             .onSuccess { data in
                 let json = try JSONDecoder().decode(Response.self, from: data)
@@ -78,12 +75,14 @@ extension GalleryNavigationController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let urlImageString = model.items[indexPath.row].sizes.filter{ $0.type == "z" }
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         let detailVC = storyboard.instantiateViewController(identifier: "DetailViewController") as! DetailViewController
        
         detailVC.fullImageString = urlImageString[0].url
-        
+        detailVC.date = model.items[indexPath.row].date
+     
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
