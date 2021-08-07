@@ -26,8 +26,7 @@ class GalleryNavigationController: UIViewController {
         activitiView = UIActivityIndicatorView(frame: CGRect(x: view.center.x, y: view.center.y, width: 20, height: 20))
         view.addSubview(activitiView)
         activitiView.startAnimating()
-        
-        
+        loadPhoto()
     }
     
     func loadPhoto() {
@@ -85,7 +84,7 @@ extension GalleryNavigationController: UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let urlImageString = model.items[indexPath.row].sizes.filter { $0.type == "y" }
         let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProductCollectionViewCell
-        cell.myImageView.loadImageUsingUrlStrting(urlString: String(describing: urlImageString[0].url))
+        cell.myImageView.loadImageUsingUrlStrting(urlString: String(describing: urlImageString[0].url), view: cell.contentView)
         
         return cell
     }

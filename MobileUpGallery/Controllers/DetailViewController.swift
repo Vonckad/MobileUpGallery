@@ -13,11 +13,12 @@ class DetailViewController: UIViewController {
     
     var fullImageString = ""
     var date = 0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = getReadableDate(date)
-        fullPhotoImageView.loadImageUsingUrlStrting(urlString: fullImageString)
+        fullPhotoImageView.loadImageUsingUrlStrting(urlString: fullImageString, view: view)
+        
     }
     
     @IBAction func shareButton(_ sender: Any) {
