@@ -17,8 +17,12 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = getReadableDate(date)
-        fullPhotoImageView.loadImageUsingUrlStrting(urlString: fullImageString, view: view)
+        fullPhotoImageView.loadImageUsingUrlStrting(urlString: fullImageString, view: self.view)
         
+    }
+    
+    @IBAction func scaleImage(_ sender: UIPinchGestureRecognizer) {
+        fullPhotoImageView.transform = CGAffineTransform(scaleX: sender.scale, y: sender.scale)
     }
     
     @IBAction func shareButton(_ sender: Any) {
@@ -33,7 +37,8 @@ class DetailViewController: UIViewController {
             self.createAlertView(title: "Ошибка", massage: "Не удается сохранить изображение в галерею")
         }
         
-        imageSaver.writeToPhotoAlbum(image: fullPhotoImageView.image!)
+        guard let image = fullPhotoImageView.image else { return }
+        imageSaver.writeToPhotoAlbum(image: image)
         
     }
     

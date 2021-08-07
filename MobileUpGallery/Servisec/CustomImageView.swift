@@ -25,15 +25,16 @@ class CustomImageView: UIImageView {
         image = nil
         
         if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) {
+            self.activitiView.isHidden = true
+            self.activitiView.stopAnimating()
             self.image = imageFromCache
             return
         }
 
         URLSession.shared.dataTask(with: url!) { (data, respones, error) in
+    
             if error != nil {
-//                self.activitiView.isHidden = false
-//                self.activitiView.startAnimating()
-//                print(error!)
+                print(error!)
                 return
             }
             

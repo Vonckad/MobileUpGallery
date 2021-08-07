@@ -42,6 +42,8 @@ class GalleryNavigationController: UIViewController {
             }
             .onError { error in
                 DispatchQueue.main.async { [weak self] in
+                    self?.activitiView.stopAnimating()
+                    self?.activitiView.isHidden = true
                     self?.createAlertView(title: "Сбой загрузки", massage: "Обновите страницу")
                 }
                 print("errror", error)
