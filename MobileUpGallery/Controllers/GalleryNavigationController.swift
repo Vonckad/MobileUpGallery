@@ -18,15 +18,26 @@ class GalleryNavigationController: UIViewController {
 
     @IBOutlet weak var photoCollectionView: UICollectionView!
     var model: Response = .init(items: [], count: 0)
+    var activitiView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        activitiView = UIActivityIndicatorView(frame: CGRect(x: view.center.x, y: view.center.y, width: 20, height: 20))
+        view.addSubview(activitiView)
+        activitiView.startAnimating()
+        
+        
+    }
+    
+    func loadPhoto() {
         VK.API.Photos.get([.ownerId: "-128666765", .albumId: "266276915"])
             .onSuccess { data in
                 let json = try JSONDecoder().decode(Response.self, from: data)
                 self.model = json
                 DispatchQueue.main.async { [weak self] in
+                    self?.activitiView.stopAnimating()
+                    self?.activitiView.isHidden = true
                     self?.photoCollectionView.reloadData()
                 }
             }
@@ -46,8 +57,13 @@ class GalleryNavigationController: UIViewController {
     
     func createAlertView(title: String, massage: String) {
         let allert = UIAlertController.init(title: title, message: massage, preferredStyle: .alert)
-        let canceAction = UIAlertAction(title: "Понятно", style: .default, handler: nil)
+        let canceAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
         allert.addAction(canceAction)
+        
+        let action = UIAlertAction(title: "Обновить", style: .default) { _ in
+            self.loadPhoto()
+        }
+        allert.addAction(action)
         
         present(allert, animated: true, completion: nil)
     }
