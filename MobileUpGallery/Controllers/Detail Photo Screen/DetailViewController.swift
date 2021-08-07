@@ -10,17 +10,21 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var fullPhotoImageView: CustomImageView!
+    @IBOutlet weak var bottomCollectionView: UICollectionView!
     
     var fullImageString = ""
     var date = 0
-
+    var miniModel: [Item] = []//.init(url: "", type: "")
+    
+//    var imageArray: Array<String> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = getReadableDate(date)
         fullPhotoImageView.loadImageUsingUrlStrting(urlString: fullImageString, view: self.view)
-        
     }
     
+    //MARK:- Action
     @IBAction func scaleImage(_ sender: UIPinchGestureRecognizer) {
         fullPhotoImageView.transform = CGAffineTransform(scaleX: sender.scale, y: sender.scale)
     }
@@ -84,21 +88,24 @@ class DetailViewController: UIViewController {
     }
 }
 
-//MARK:- ImageSaveClass
-class ImageSaver: NSObject {
+//MARK:- UICollectionViewDataSource
+extension DetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var successHandler: (() -> Void)?
-    var errorHandler: (() -> Void)?
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return miniModel.count//imageArray.count
+    }
     
-    func writeToPhotoAlbum(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let bottomCell = bottomCollectionView.dequeueReusableCell(withReuseIdentifier: "bottomCell", for: indexPath) as! BottomCollectionViewCell
+        let url = miniModel[indexPath.row].sizes.filter{ $0.type == "m"}
+        bottomCell.imageView.loadImageUsingUrlStrting(urlString: url[0].url, view: bottomCell.contentView)
+        return bottomCell
     }
-
-    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if error != nil {
-            errorHandler?()
-        } else {
-            successHandler?()
-        }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let url = miniModel[indexPath.row].sizes.filter{ $0.type == "z"}
+        fullPhotoImageView.loadImageUsingUrlStrting(urlString: url[0].url, view: UIView())
+        
     }
+    
 }

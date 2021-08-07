@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -148,7 +149,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vdP-Hr-0Vn" customClass="CustomImageView" customModule="MobileUpGallery" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="98" width="414" height="700"/>
+                                <rect key="frame" x="0.0" y="34" width="414" height="828"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="999" constant="700" id="E3i-l2-1ZY"/>
@@ -157,14 +158,71 @@
                                     <outletCollection property="gestureRecognizers" destination="gvT-B9-IZH" appends="YES" id="A6x-Sg-ef6"/>
                                 </connections>
                             </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nzx-vE-6pM">
+                                <rect key="frame" x="0.0" y="806" width="414" height="56"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="SIU-Ui-IKW"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="2" minimumInteritemSpacing="2" id="NOs-ic-Npc">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bottomCell" id="6o1-Az-82t" customClass="BottomCollectionViewCell" customModule="MobileUpGallery" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-36" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YHl-k2-Arb">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EZ7-gY-p0o" customClass="CustomImageView" customModule="MobileUpGallery" customModuleProvider="target">
+                                                    <rect key="frame" x="24" y="48" width="51" height="39"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="56" id="TQI-dn-J4J"/>
+                                                        <constraint firstAttribute="width" constant="56" id="hyd-6h-F3J"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="EZ7-gY-p0o" firstAttribute="centerX" secondItem="YHl-k2-Arb" secondAttribute="centerX" id="LRL-sP-ujy"/>
+                                                <constraint firstItem="EZ7-gY-p0o" firstAttribute="centerY" secondItem="YHl-k2-Arb" secondAttribute="centerY" id="pBK-Gp-f5L"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageView" destination="EZ7-gY-p0o" id="itw-0n-fUc"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="N7g-GO-H6O" id="HKW-bb-rDo"/>
+                                    <outlet property="delegate" destination="N7g-GO-H6O" id="Czo-bp-P2t"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yQM-el-uvF">
+                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="aNf-AT-6Uh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mgb-w2-NgV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mgb-w2-NgV" firstAttribute="trailing" secondItem="vdP-Hr-0Vn" secondAttribute="trailing" id="11g-TA-8Oa"/>
                             <constraint firstItem="vdP-Hr-0Vn" firstAttribute="centerX" secondItem="0aW-Xc-DWZ" secondAttribute="centerX" id="MBx-Ya-f7O"/>
+                            <constraint firstItem="mgb-w2-NgV" firstAttribute="trailing" secondItem="nzx-vE-6pM" secondAttribute="trailing" id="NRu-Sh-JIl"/>
+                            <constraint firstItem="yQM-el-uvF" firstAttribute="top" secondItem="vdP-Hr-0Vn" secondAttribute="bottom" id="UQH-T2-Gbx"/>
                             <constraint firstItem="vdP-Hr-0Vn" firstAttribute="leading" secondItem="mgb-w2-NgV" secondAttribute="leading" id="ZTG-Lh-hyC"/>
+                            <constraint firstItem="yQM-el-uvF" firstAttribute="leading" secondItem="mgb-w2-NgV" secondAttribute="leading" id="ce8-8p-je7"/>
                             <constraint firstItem="vdP-Hr-0Vn" firstAttribute="centerY" secondItem="0aW-Xc-DWZ" secondAttribute="centerY" id="ngb-wb-Jiy"/>
+                            <constraint firstAttribute="bottom" secondItem="yQM-el-uvF" secondAttribute="bottom" id="pMY-3j-STJ"/>
+                            <constraint firstAttribute="bottom" secondItem="nzx-vE-6pM" secondAttribute="bottom" constant="34" id="pmF-cz-QFk"/>
+                            <constraint firstItem="nzx-vE-6pM" firstAttribute="leading" secondItem="mgb-w2-NgV" secondAttribute="leading" id="psL-To-zE4"/>
+                            <constraint firstItem="mgb-w2-NgV" firstAttribute="trailing" secondItem="yQM-el-uvF" secondAttribute="trailing" id="zI9-ke-f4E"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="dsate" id="1TE-fS-5fc">
@@ -178,6 +236,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="bottomCollectionView" destination="nzx-vE-6pM" id="Lhq-NC-vVz"/>
                         <outlet property="fullPhotoImageView" destination="vdP-Hr-0Vn" id="D5c-0q-xuS"/>
                     </connections>
                 </viewController>
@@ -188,7 +247,7 @@
                     </connections>
                 </pinchGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2654" y="60"/>
+            <point key="canvasLocation" x="2653.6231884057975" y="59.598214285714285"/>
         </scene>
         <!--My Navigation Controller-->
         <scene sceneID="UZk-ak-P9q">

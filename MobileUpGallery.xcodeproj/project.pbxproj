@@ -19,6 +19,8 @@
 		E38D6A7826BB2DB400F04995 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38D6A7726BB2DB400F04995 /* ProductCollectionViewCell.swift */; };
 		E38D6A7A26BBE49C00F04995 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38D6A7926BBE49B00F04995 /* DataModel.swift */; };
 		E38D6A7C26BC1B9800F04995 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38D6A7B26BC1B9700F04995 /* DetailViewController.swift */; };
+		E3AD7C9626BEBF01005CC887 /* BottomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD7C9526BEBF01005CC887 /* BottomCollectionViewCell.swift */; };
+		E3AD7C9926BEBFB6005CC887 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD7C9826BEBFB6005CC887 /* ImageSaver.swift */; };
 		FAB245721C9203DA89A68E76 /* Pods_MobileUpGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA41E28265E86AC9F7134757 /* Pods_MobileUpGallery.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 		E38D6A7726BB2DB400F04995 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		E38D6A7926BBE49B00F04995 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		E38D6A7B26BC1B9700F04995 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E3AD7C9526BEBF01005CC887 /* BottomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCollectionViewCell.swift; sourceTree = "<group>"; };
+		E3AD7C9826BEBFB6005CC887 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				E33E443126B9D3AD003F9A70 /* LoginViewController.swift */,
-				E3AD7C9426BE65BD005CC887 /* PhotoAlbum */,
-				E38D6A7B26BC1B9700F04995 /* DetailViewController.swift */,
+				E3AD7C9426BE65BD005CC887 /* Photo Album Screen */,
+				E3AD7C9726BEBF5E005CC887 /* Detail Photo Screen */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -144,17 +148,27 @@
 			isa = PBXGroup;
 			children = (
 				E38D6A7526BB2D8800F04995 /* CustomImageView.swift */,
+				E3AD7C9826BEBFB6005CC887 /* ImageSaver.swift */,
 			);
 			path = Servisec;
 			sourceTree = "<group>";
 		};
-		E3AD7C9426BE65BD005CC887 /* PhotoAlbum */ = {
+		E3AD7C9426BE65BD005CC887 /* Photo Album Screen */ = {
 			isa = PBXGroup;
 			children = (
 				E33E444526B9E5FF003F9A70 /* GalleryNavigationController.swift */,
 				E38D6A7726BB2DB400F04995 /* ProductCollectionViewCell.swift */,
 			);
-			path = PhotoAlbum;
+			path = "Photo Album Screen";
+			sourceTree = "<group>";
+		};
+		E3AD7C9726BEBF5E005CC887 /* Detail Photo Screen */ = {
+			isa = PBXGroup;
+			children = (
+				E38D6A7B26BC1B9700F04995 /* DetailViewController.swift */,
+				E3AD7C9526BEBF01005CC887 /* BottomCollectionViewCell.swift */,
+			);
+			path = "Detail Photo Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,12 +286,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E38D6A7C26BC1B9800F04995 /* DetailViewController.swift in Sources */,
+				E3AD7C9626BEBF01005CC887 /* BottomCollectionViewCell.swift in Sources */,
 				E33E443226B9D3AD003F9A70 /* LoginViewController.swift in Sources */,
 				E33E442E26B9D3AD003F9A70 /* AppDelegate.swift in Sources */,
 				E38D6A7826BB2DB400F04995 /* ProductCollectionViewCell.swift in Sources */,
 				E33E443026B9D3AD003F9A70 /* SceneDelegate.swift in Sources */,
 				E38D6A7626BB2D8800F04995 /* CustomImageView.swift in Sources */,
 				E38D6A7A26BBE49C00F04995 /* DataModel.swift in Sources */,
+				E3AD7C9926BEBFB6005CC887 /* ImageSaver.swift in Sources */,
 				E33E444226B9D56A003F9A70 /* VKDelegate.swift in Sources */,
 				E33E444626B9E600003F9A70 /* GalleryNavigationController.swift in Sources */,
 			);

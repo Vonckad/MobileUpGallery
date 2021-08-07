@@ -19,6 +19,7 @@ class GalleryNavigationController: UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     var model: Response = .init(items: [], count: 0)
     var activitiView = UIActivityIndicatorView()
+//    var imageArrayFromDetail: Array<String> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class GalleryNavigationController: UIViewController {
             .onSuccess { data in
                 let json = try JSONDecoder().decode(Response.self, from: data)
                 self.model = json
+//                self.getImageFromDetail()
                 DispatchQueue.main.async { [weak self] in
                     self?.activitiView.stopAnimating()
                     self?.activitiView.isHidden = true
@@ -50,6 +52,13 @@ class GalleryNavigationController: UIViewController {
             }
             .send()
     }
+    
+//    func getImageFromDetail() {
+//        for image in model.items {
+//            let im = image.sizes.filter { $0.type == "m" }
+//            imageArrayFromDetail.append(im[0].url)
+//        }
+//    }
     
     @IBAction func logout(_ sender: Any) {
         self.dismiss(animated: true)
@@ -99,6 +108,14 @@ extension GalleryNavigationController: UICollectionViewDataSource, UICollectionV
        
         detailVC.fullImageString = urlImageString[0].url
         detailVC.date = model.items[indexPath.row].date
+//        detailVC.imageArray = imageArrayFromDetail
+        
+        var tempModel: [Item] = []
+        for item in model.items {
+            tempModel.append(item)
+        }
+        
+        detailVC.miniModel = tempModel
      
         navigationController?.pushViewController(detailVC, animated: true)
     }
