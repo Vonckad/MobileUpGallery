@@ -14,14 +14,36 @@ class DetailViewController: UIViewController {
     
     var fullImageString = ""
     var date = 0
-    var miniModel: [Item] = []//.init(url: "", type: "")
-    
-//    var imageArray: Array<String> = []
+    var miniModel: [Item] = []
+    var index = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = getReadableDate(date)
         fullPhotoImageView.loadImageUsingUrlStrting(urlString: fullImageString, view: self.view)
+    }
+    
+    func createActivityVC(index: IndexPath) {
+        
+        guard let image = fullPhotoImageView.image else { return }
+
+        let url = miniModel[index.row].sizes.filter { $0.type == "m"}
+        
+        let activityViewController : UIActivityViewController = UIActivityViewController(
+            activityItems: [image, url[0].url], applicationActivities: nil)
+        
+        activityViewController.activityItemsConfiguration = [ UIActivity.ActivityType.saveToCameraRoll ] as? UIActivityItemsConfigurationReading
+        
+        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+//                self.createAlertView(title: "Произошла ошибка", massage: "Не удалось выполнить ваше действие") //я думаю пока это тут будет лишним
+                return
+            }
+            self.createAlertView(title: "Готово", massage: "")
+        }
+        
+        activityViewController.popoverPresentationController?.sourceView = view
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     //MARK:- Action
@@ -30,20 +52,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func shareButton(_ sender: Any) {
-        
-        let imageSaver = ImageSaver()
-        
-        imageSaver.successHandler = {
-            self.createAlertView(title: "Готово", massage: "Изображение сохранено в галерею")
-        }
-        
-        imageSaver.errorHandler = {
-            self.createAlertView(title: "Ошибка", massage: "Не удается сохранить изображение в галерею")
-        }
-        
-        guard let image = fullPhotoImageView.image else { return }
-        imageSaver.writeToPhotoAlbum(image: image)
-        
+        createActivityVC(index: index)
     }
     
     //MARK:- createAllert
@@ -88,11 +97,11 @@ class DetailViewController: UIViewController {
     }
 }
 
-//MARK:- UICollectionViewDataSource
+//MARK:- extension DetailViewController UICollectionViewDataSource
 extension DetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return miniModel.count//imageArray.count
+        return miniModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -103,9 +112,8 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        index = indexPath
         let url = miniModel[indexPath.row].sizes.filter{ $0.type == "z"}
-        fullPhotoImageView.loadImageUsingUrlStrting(urlString: url[0].url, view: UIView())
-        
+        fullPhotoImageView.loadImageUsingUrlStrting(urlString: url[0].url, view: fullPhotoImageView)
     }
-    
 }

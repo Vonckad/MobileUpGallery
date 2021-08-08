@@ -123,9 +123,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Gallery Up Mobile" id="Zki-5L-CkF">
-                        <barButtonItem key="backBarButtonItem" title=" " id="N9m-aW-AVA"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="N9m-aW-AVA">
+                            <color key="tintColor" systemColor="labelColor"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Выход" id="Md7-zK-Whd">
-                            <color key="tintColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <action selector="logout:" destination="chH-iW-WdF" id="3bo-EB-2Hm"/>
                             </connections>
@@ -272,6 +274,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
