@@ -9,12 +9,15 @@ import UIKit
 import SwiftyVK
 
 class LoginViewController: UIViewController {
+    
     @IBOutlet weak var loginButtonOutlet: UIButton!
+    @IBOutlet weak var mainLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loginButtonOutlet.layer.cornerRadius = 8
-    
+        loginButtonOutlet.setTitle("mainButtonLogin".localized, for: [.normal])
+        mainLabel.text = "mainLabel".localized
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,6 +30,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    //MARK:- Action
     @IBAction func loginButtonAtcion(_ sender: Any) {
         if VK.sessions.default.accessToken == nil {
             DispatchQueue.global().async {  [weak self] in
@@ -41,7 +45,7 @@ class LoginViewController: UIViewController {
                     print("SECSES", info)
                 } onError: { error in
                     DispatchQueue.main.async { [weak self] in
-                    self?.createAlertView(title: "Произошла ошибка!", massage: "Проверьте логин/пароль и попробуйте еще раз" )
+                        self?.createAlertView(title: "mailAllertTitle".localized , massage: "mailAllertMessage".localized)
                     }
                     print("ERROR", error)
                 }
@@ -50,9 +54,10 @@ class LoginViewController: UIViewController {
         }
     }
     
+    //MARK:- createAlertView
     func createAlertView(title: String, massage: String) {
         let allert = UIAlertController.init(title: title, message: massage, preferredStyle: .alert)
-        let canceAction = UIAlertAction(title: "Понятно", style: .default, handler: nil)
+        let canceAction = UIAlertAction(title: "mailAllertButton".localized, style: .default, handler: nil)
         allert.addAction(canceAction)
         
         present(allert, animated: true, completion: nil)

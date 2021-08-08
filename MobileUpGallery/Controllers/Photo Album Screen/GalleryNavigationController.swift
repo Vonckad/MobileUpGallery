@@ -17,6 +17,7 @@ class MyNavigationController: UINavigationController {
 class GalleryNavigationController: UIViewController {
 
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    @IBOutlet weak var logoutButtonOutlet: UIBarButtonItem!
     var model: Response = .init(items: [], count: 0)
     var activitiView = UIActivityIndicatorView()
     
@@ -26,6 +27,8 @@ class GalleryNavigationController: UIViewController {
         activitiView = UIActivityIndicatorView(frame: CGRect(x: view.center.x, y: view.center.y, width: 20, height: 20))
         view.addSubview(activitiView)
         activitiView.startAnimating()
+        navigationItem.title = "titleCollectionView".localized
+        logoutButtonOutlet.title = "logoutButton".localized
         loadPhoto()
     }
     
@@ -44,7 +47,7 @@ class GalleryNavigationController: UIViewController {
                 DispatchQueue.main.async { [weak self] in
                     self?.activitiView.stopAnimating()
                     self?.activitiView.isHidden = true
-                    self?.createAlertView(title: "Сбой загрузки", massage: "Обновите страницу")
+                    self?.createAlertView(title: "collectionAlertTitle".localized, massage: "collectionAlertMessage".localized)
                 }
                 print("errror", error)
             }
@@ -58,10 +61,10 @@ class GalleryNavigationController: UIViewController {
     
     func createAlertView(title: String, massage: String) {
         let allert = UIAlertController.init(title: title, message: massage, preferredStyle: .alert)
-        let canceAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        let canceAction = UIAlertAction(title: "collectionAlertCancelButton".localized, style: .cancel, handler: nil)
         allert.addAction(canceAction)
         
-        let action = UIAlertAction(title: "Обновить", style: .default) { _ in
+        let action = UIAlertAction(title: "collectionAlertRefreshBurron".localized, style: .default) { _ in
             self.loadPhoto()
         }
         allert.addAction(action)

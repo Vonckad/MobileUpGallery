@@ -52,6 +52,7 @@
                     </view>
                     <connections>
                         <outlet property="loginButtonOutlet" destination="JCa-Ea-Mhb" id="YkR-a7-Es7"/>
+                        <outlet property="mainLabel" destination="jHg-ZE-9ru" id="nZr-0E-mWO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -135,6 +136,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="logoutButtonOutlet" destination="Md7-zK-Whd" id="MVp-dk-OZq"/>
                         <outlet property="photoCollectionView" destination="9Zr-LF-NTP" id="fFd-B9-s6J"/>
                     </connections>
                 </viewController>

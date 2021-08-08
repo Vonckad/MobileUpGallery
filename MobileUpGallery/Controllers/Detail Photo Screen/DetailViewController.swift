@@ -23,6 +23,7 @@ class DetailViewController: UIViewController {
         fullPhotoImageView.loadImageUsingUrlStrting(urlString: fullImageString, view: self.view)
     }
     
+    //MARK:- createActivityViewController
     func createActivityVC(index: IndexPath) {
         
         guard let image = fullPhotoImageView.image else { return }
@@ -39,7 +40,7 @@ class DetailViewController: UIViewController {
 //                self.createAlertView(title: "Произошла ошибка", massage: "Не удалось выполнить ваше действие") //я думаю пока это тут будет лишним
                 return
             }
-            self.createAlertView(title: "Готово", massage: "")
+            self.createAlertView(title: "detaliAlertTitle".localized, massage: "")
         }
         
         activityViewController.popoverPresentationController?.sourceView = view
@@ -58,7 +59,7 @@ class DetailViewController: UIViewController {
     //MARK:- createAllert
     func createAlertView(title: String, massage: String) {
         let allert = UIAlertController.init(title: title, message: massage, preferredStyle: .alert)
-        let canceAction = UIAlertAction(title: "Понятно", style: .default, handler: nil)
+        let canceAction = UIAlertAction(title: "detailAlertButton".localized, style: .default, handler: nil)
         allert.addAction(canceAction)
         
         present(allert, animated: true, completion: nil)
@@ -85,7 +86,7 @@ class DetailViewController: UIViewController {
                 return dateFormatter.string(from: date)
             }
         } else {
-            dateFormatter.dateFormat = "MMM d, yyyy"
+            dateFormatter.dateFormat = "d MMMM yyyy"
             return dateFormatter.string(from: date)
         }
     }
@@ -115,5 +116,6 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
         index = indexPath
         let url = miniModel[indexPath.row].sizes.filter{ $0.type == "z"}
         fullPhotoImageView.loadImageUsingUrlStrting(urlString: url[0].url, view: fullPhotoImageView)
+        navigationItem.title = getReadableDate(miniModel[indexPath.row].date)
     }
 }
